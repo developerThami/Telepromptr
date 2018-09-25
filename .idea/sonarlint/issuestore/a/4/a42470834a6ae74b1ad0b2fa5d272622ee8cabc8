@@ -1,0 +1,5 @@
+
+Nsquid:S1172"-Remove this unused method parameter "script".(­‹Ûžÿÿÿÿÿ8úÆ¬²à,
+Fsquid:S1068"*Remove this unused "script" private field.(­ôëª8úÆ¬²à,
+gsquid:CommentedOutCodeLine"<This block of commented-out lines of code should be removed.(ðëŸ‹8úÆ¬²à,
+qsquid:S1450"URemove the "script" field and declare it as a local variable in the relevant methods.(­ôëª8úÆ¬²à,

@@ -1,0 +1,14 @@
+
+Psquid:S1068"4Remove this unused "progressTextView" private field.(Àª’Ï8àï…½à,
+fsquid:CommentedOutCodeLine"<This block of commented-out lines of code should be removed.(ß©/8àï…½à,
+¢squid:S1186"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(ñ®çâùÿÿÿÿ8àï…½à,
+lsquid:CommentedOutCodeLine"<This block of commented-out lines of code should be removed.(±Ð¦Ôÿÿÿÿÿ8àï…½à,
+Ksquid:S1172"/Remove this unused method parameter "progress".(¯ÐãÊ8àï…½à,
+squid:S1186"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(‰ÁÕ–8àï…½à,
+]squid:UselessImportCheck"4Remove this unused import 'android.widget.EditText'.(†Å›Ú8àï…½à,
+ssquid:S3973"WUse curly braces or indentation to denote the code conditionally executed by this "if".(´ó ‘8àï…½à,
+lsquid:CommentedOutCodeLine"<This block of commented-out lines of code should be removed.(€¯Æäûÿÿÿÿ8àï…½à,
+ssquid:S1450"WRemove the "activity" field and declare it as a local variable in the relevant methods.(³Ï”Æ8àï…½à,
+{squid:S1450"_Remove the "progressTextView" field and declare it as a local variable in the relevant methods.(Àª’Ï8àï…½à,
+[squid:S1854":Remove this useless assignment to local variable "params".(›µýùüÿÿÿÿ8àï…½à,
+Lsquid:S1481"+Remove this unused "params" local variable.(›µýùüÿÿÿÿ8àï…½à,

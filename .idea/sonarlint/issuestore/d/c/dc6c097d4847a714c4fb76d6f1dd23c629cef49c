@@ -1,0 +1,20 @@
+
+usquid:S2293_"YReplace the type specification in this constructor call with the diamond operator ("<>").(ß·‹°ûÿÿÿÿ
+usquid:S14886"^Immediately return this expression instead of assigning it to the temporary variable "_query".(œ˜ŞÍ
+esquid:S00101"MRename this class name to match the regular expression '^[A-Z][a-zA-Z0-9]*$'.(»¤ÓÅ
+gsquid:S00116"ORename this field "__db" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(àÛôÇ
+}squid:S00116"eRename this field "__insertionAdapterOfScript" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(‘å¥ö
+squid:S00116"dRename this field "__preparedStmtOfDeleteAll" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¥âıÒùÿÿÿÿ
+isquid:S00117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ã¾Êğ
+isquid:S00117I"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÕØ‘¯
+nsquid:S00117W"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(İ×—³ùÿÿÿÿ
+isquid:S00117X"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(äŠ•
+nsquid:S00117_"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ß·‹°ûÿÿÿÿ
+nsquid:S00117a"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ê›ã˜ûÿÿÿÿ
+isquid:S00117~"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ú†í
+isquid:S00117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(šºî€
+jsquid:S00117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(äŠ•
+jsquid:S00117ˆ"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ƒÉİ 
+usquid:UselessImportCheck
+"QRemove this unnecessary import: java.lang classes are always implicitly imported.(ú®Ú±
+zsquid:UselessImportCheck"QRemove this unnecessary import: java.lang classes are always implicitly imported.(ôİÕıÿÿÿÿ

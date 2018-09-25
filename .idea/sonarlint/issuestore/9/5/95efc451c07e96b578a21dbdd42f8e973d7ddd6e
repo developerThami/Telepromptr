@@ -1,0 +1,9 @@
+
+tsquid:S1450"XRemove the "viewModel" field and declare it as a local variable in the relevant methods.(¯¿±ü8íÔ¡²à,
+Hsquid:S1068",Remove this unused "activity" private field.(³Ï”Æ8íÔ¡²à,
+lsquid:CommentedOutCodeLine"<This block of commented-out lines of code should be removed.(÷…—®ýÿÿÿÿ8íÔ¡²à,
+gsquid:CommentedOutCodeLine"<This block of commented-out lines of code should be removed.(Â¥úó8íÔ¡²à,
+csquid:HiddenFieldCheck"<Rename "activity" which hides the field declared at line 49.(—õƒÅ8íÔ¡²à,
+]squid:S2259"AA "NullPointerException" could be thrown; "uri" is nullable here.(Ñ”ªå8íÔ¡²à,
+ksquid:S3008"ORename this field "CODE" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(äÒ˜©8íÔ¡²à,
+lsquid:CommentedOutCodeLine"<This block of commented-out lines of code should be removed.(Ãôª¼ýÿÿÿÿ8íÔ¡²à,

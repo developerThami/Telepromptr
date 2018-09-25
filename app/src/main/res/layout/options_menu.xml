@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="20dp"
+    android:orientation="vertical">
+
+    <Button
+        android:id="@+id/create"
+        style="@style/Widget.AppCompat.Button.Borderless"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="start"
+        android:drawableLeft="@drawable/ic_edit_"
+        android:drawablePadding="20dp"
+        android:fontFamily="@font/roboto"
+        android:gravity="left|center_vertical"
+        android:text="Create new script"
+        android:textAllCaps="false"
+        android:textColor="@color/secondary_text" />
+
+    <Button
+        android:id="@+id/upload"
+        style="@style/Widget.AppCompat.Button.Borderless"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:drawableLeft="@drawable/ic_file_upload"
+        android:drawablePadding="20dp"
+        android:fontFamily="@font/roboto"
+        android:gravity="left|center_vertical"
+        android:text="Upload from gallery"
+        android:textAllCaps="false"
+        android:textColor="@color/secondary_text" />
+
+</LinearLayout>
