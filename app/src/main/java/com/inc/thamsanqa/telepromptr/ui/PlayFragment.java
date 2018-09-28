@@ -3,6 +3,7 @@ package com.inc.thamsanqa.telepromptr.ui;
 
 import android.os.Bundle;
 import android.support.design.widget.BottomSheetDialog;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.CardView;
 import android.view.LayoutInflater;
@@ -44,6 +45,8 @@ public class PlayFragment extends Fragment {
     private boolean isPlaying = false;
     private CardView controlsView;
     private SeekBar seekBar;
+    private View view;
+    private boolean hasReachedBottom;
 
     public PlayFragment() {
         // Required empty public constructor
@@ -75,7 +78,7 @@ public class PlayFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_play, container, false);
+        view = inflater.inflate(R.layout.fragment_play, container, false);
 
         scriptView = view.findViewById(R.id.scriptTextView);
         scrollView = view.findViewById(R.id.scriptScrollView);
@@ -100,6 +103,10 @@ public class PlayFragment extends Fragment {
                     scroll();
                 }
                 isPlaying = !isPlaying;
+
+                if (hasReachedBottom) {
+                    showDoneScrollingMessage();
+                }
             }
         });
 
@@ -107,6 +114,7 @@ public class PlayFragment extends Fragment {
         scriptView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                isPlaying = !isPlaying;
                 showControls();
             }
         });
@@ -120,7 +128,8 @@ public class PlayFragment extends Fragment {
         activity.getSupportActionBar().hide();
 
         scriptView.setText(script.getBody());
-        scriptView.setTextSize(60);
+        scriptView.setTextSize(45);
+//        scriptView.setTextSize(60);
 
         seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
@@ -145,15 +154,23 @@ public class PlayFragment extends Fragment {
                 .addOnScrollChangedListener(new ViewTreeObserver.OnScrollChangedListener() {
                     @Override
                     public void onScrollChanged() {
-                        if (scrollView.getChildAt(0).getBottom() <= (scrollView.getHeight() + scrollView.getScrollY())) {
-                            Toast.makeText(getContext(), "scrolled", Toast.LENGTH_SHORT).show();
-                        } else {
-                            if (isPlaying)
-                                scroll();
+                        hasReachedBottom = scrollView.getChildAt(0).getBottom() <= (scrollView.getHeight() + scrollView.getScrollY());
+
+                        if (!hasReachedBottom && isPlaying) {
+                            scroll();
                         }
+
+                        if(scrollView.getChildAt(0).getBottom() == (scrollView.getHeight() + scrollView.getScrollY())){
+                            showDoneScrollingMessage();
+                        }
+
                     }
                 });
 
+    }
+
+    private void showDoneScrollingMessage() {
+        Toast.makeText(getContext() , "Script done", Toast.LENGTH_LONG).show();
     }
 
     private void updateSpeed(int progress) {
