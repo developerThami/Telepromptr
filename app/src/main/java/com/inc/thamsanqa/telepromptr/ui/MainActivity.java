@@ -11,7 +11,8 @@ import com.inc.thamsanqa.telepromptr.persistance.entities.Script;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class MainActivity extends AppCompatActivity implements ScriptAdapter.OnScriptSelectedListener, PlayScriptFragment.PlayScriptListener {
+public class MainActivity extends AppCompatActivity implements ScriptAdapter.OnScriptSelectedListener
+        , PlayScriptFragment.PlayScriptListener , ScriptListFragment.OnAddScriptListener {
 
     @BindView(R.id.toolbar)
     Toolbar bar;
@@ -30,9 +31,11 @@ public class MainActivity extends AppCompatActivity implements ScriptAdapter.OnS
         setSupportActionBar(bar);
 
         if (savedInstanceState == null) {
+            ScriptListFragment fragment = ScriptListFragment.newInstance();
+            fragment.setListener(this);
             getSupportFragmentManager()
                     .beginTransaction()
-                    .replace(R.id.container, ScriptListFragment.newInstance())
+                    .replace(R.id.container, fragment)
                     .addToBackStack(ScriptListFragment.FRAGMENT_TAG)
                     .commit();
         }
@@ -74,6 +77,14 @@ public class MainActivity extends AppCompatActivity implements ScriptAdapter.OnS
                 .commit();
     }
 
+    @Override
+    public void createNewScript() {
+        getSupportFragmentManager()
+                .beginTransaction()
+                .replace(R.id.container, AddScriptFragment.newInstance())
+                .addToBackStack(AddScriptFragment.FRAGMENT_TAG)
+                .commit();
+    }
 
 
 //    scriptViewModel = ViewModelProviders.of(this).get(ScriptViewModel.class);

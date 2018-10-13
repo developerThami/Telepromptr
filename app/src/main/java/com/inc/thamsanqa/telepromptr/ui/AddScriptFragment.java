@@ -1,6 +1,8 @@
 package com.inc.thamsanqa.telepromptr.ui;
 
+import android.arch.lifecycle.ViewModelProviders;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -13,6 +15,7 @@ import android.widget.Toast;
 
 import com.inc.thamsanqa.telepromptr.R;
 import com.inc.thamsanqa.telepromptr.persistance.entities.Script;
+import com.inc.thamsanqa.telepromptr.viewmodel.ScriptViewModel;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -26,13 +29,9 @@ public class AddScriptFragment extends Fragment {
 
     public static final String FRAGMENT_TAG = "PlayScriptFragment.TAG";
 
-
     @BindView(R.id.scriptText)
     EditText scriptView;
 
-    private static final String ARG_PARAM1 = "param1";
-
-    private Script script;
 
     public AddScriptFragment() {
         // Required empty public constructor
@@ -42,26 +41,17 @@ public class AddScriptFragment extends Fragment {
      * Use this factory method to create a new instance of
      * this fragment using the provided parameters.
      *
-     * @param script Parameter 1.
      * @return A new instance of fragment PlayScriptFragment.
      */
-    public static PlayFragment newInstance(Script script) {
-        PlayFragment fragment = new PlayFragment();
-        Bundle args = new Bundle();
-        //args.putParcelable(ARG_PARAM1, script);
-        fragment.setArguments(args);
+    public static AddScriptFragment newInstance() {
+        AddScriptFragment fragment = new AddScriptFragment();
         return fragment;
     }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
          setHasOptionsMenu(true);
-
-        if (getArguments() != null) {
-            script = getArguments().getParcelable(ARG_PARAM1);
-        }
     }
 
     @Override
@@ -69,6 +59,11 @@ public class AddScriptFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_add, container, false);
         ButterKnife.bind(this,view);
+
+        MainActivity activity = (MainActivity) getActivity();
+        activity.getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_close);
+        activity.getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        activity.getSupportActionBar().setTitle("New Script");
 
         return view;
     }
@@ -80,18 +75,34 @@ public class AddScriptFragment extends Fragment {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-
         int id = item.getItemId();
-
-        if (id == R.id.action_add) {
-            saveScript();
-            return true;
+        switch (id){
+            case R.id.action_add:
+                saveScript();
+                return true;
+            case android.R.id.home:
+                goHome();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
         }
-
-        return super.onOptionsItemSelected(item);
     }
 
     private void saveScript() {
+
+        ScriptViewModel viewModel = ViewModelProviders.of(this).get(ScriptViewModel.class);
+
+        Script script = new Script();
+        script.setBody(scriptView.getText().toString());
+        script.setDateInMilli(System.currentTimeMillis());
+
+        viewModel.saveNewScript(script);
         Toast.makeText(getContext() , "Saved", Toast.LENGTH_SHORT).show();
+
+        goHome();
+    }
+
+    private void goHome(){
+        getActivity().getSupportFragmentManager().popBackStack();
     }
 }
