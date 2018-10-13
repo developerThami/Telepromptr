@@ -7,6 +7,7 @@ import android.arch.lifecycle.ViewModelProviders;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
 import android.support.annotation.Nullable;
 import android.support.design.widget.BottomSheetDialog;
 import android.support.design.widget.FloatingActionButton;
@@ -15,6 +16,7 @@ import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -26,6 +28,14 @@ import com.inc.thamsanqa.telepromptr.R;
 import com.inc.thamsanqa.telepromptr.persistance.entities.Script;
 import com.inc.thamsanqa.telepromptr.viewmodel.ScriptViewModel;
 
+import java.io.BufferedReader;
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.Calendar;
 import java.util.List;
 
@@ -44,7 +54,6 @@ public class ScriptListFragment extends Fragment {
     public static final String FRAGMENT_TAG = "ScriptListFragment.TAG";
     private static int CODE = 200;
 
-
     private ScriptViewModel viewModel;
     private MainActivity activity;
 
@@ -54,7 +63,7 @@ public class ScriptListFragment extends Fragment {
 
     OnAddScriptListener listener;
 
-    interface OnAddScriptListener{
+    interface OnAddScriptListener {
         void createNewScript();
     }
 
@@ -192,10 +201,35 @@ public class ScriptListFragment extends Fragment {
         Uri uri = null;
         if (data != null) {
             uri = data.getData();
+            Log.d(FRAGMENT_TAG, getTextFileData(uri.getPath()));
         }
 
         if (requestCode == CODE) {
-            Toast.makeText(getContext(), uri.toString(), Toast.LENGTH_SHORT).show();
+       //     Toast.makeText(getContext(), getTextFileData(uri.getPath()), Toast.LENGTH_SHORT).show();
         }
+    }
+
+    public String getTextFileData(String fileName) {
+
+        File sdcard = Environment.getExternalStorageDirectory();
+        String[] array = fileName.split("/");
+
+        File file = new File(fileName);
+        StringBuilder text = new StringBuilder();
+        try {
+            BufferedReader br = new BufferedReader(new FileReader(file));
+            String line;
+            while ((line = br.readLine()) != null) {
+                text.append(line);
+                text.append('\n');
+            }
+            br.close();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        return text.toString();
     }
 }

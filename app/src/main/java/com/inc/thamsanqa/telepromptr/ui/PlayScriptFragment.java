@@ -116,18 +116,16 @@ public class PlayScriptFragment extends Fragment {
     public boolean onOptionsItemSelected(MenuItem item) {
 
         int id = item.getItemId();
-
-        if (id == R.id.action_play) {
-            listener.onPlayScript(script);
-            return true;
+        switch (id) {
+            case R.id.action_play:
+                listener.onPlayScript(script);
+                return true;
+            case android.R.id.home:
+                activity.getSupportActionBar().setDisplayHomeAsUpEnabled(false);
+                activity.getSupportFragmentManager().popBackStack();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
         }
-
-        if(id == android.R.id.home){
-
-            activity.getSupportActionBar().setDisplayHomeAsUpEnabled(false);
-            activity.getSupportFragmentManager().popBackStack();
-        }
-
-        return super.onOptionsItemSelected(item);
     }
 }

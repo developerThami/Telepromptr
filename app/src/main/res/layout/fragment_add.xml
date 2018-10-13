@@ -17,6 +17,7 @@
         android:hint="Add new script..."
         android:gravity="start"
         android:inputType="textMultiLine"
+        android:imeOptions="actionDone"
         android:textColorHint="@color/colorPrimary"
         android:theme="@style/TextPrimary"
         app:layout_constraintTop_toTopOf="parent" />

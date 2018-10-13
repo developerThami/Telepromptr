@@ -27,7 +27,7 @@ import butterknife.ButterKnife;
  */
 public class AddScriptFragment extends Fragment {
 
-    public static final String FRAGMENT_TAG = "PlayScriptFragment.TAG";
+    public static final String FRAGMENT_TAG = "AddScriptFragment.TAG";
 
     @BindView(R.id.scriptText)
     EditText scriptView;
@@ -51,14 +51,14 @@ public class AddScriptFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-         setHasOptionsMenu(true);
+        setHasOptionsMenu(true);
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_add, container, false);
-        ButterKnife.bind(this,view);
+        ButterKnife.bind(this, view);
 
         MainActivity activity = (MainActivity) getActivity();
         activity.getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_close);
@@ -76,7 +76,7 @@ public class AddScriptFragment extends Fragment {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
-        switch (id){
+        switch (id) {
             case R.id.action_add:
                 saveScript();
                 return true;
@@ -93,16 +93,17 @@ public class AddScriptFragment extends Fragment {
         ScriptViewModel viewModel = ViewModelProviders.of(this).get(ScriptViewModel.class);
 
         Script script = new Script();
+        script.setTitle("Untitled");
         script.setBody(scriptView.getText().toString());
         script.setDateInMilli(System.currentTimeMillis());
 
         viewModel.saveNewScript(script);
-        Toast.makeText(getContext() , "Saved", Toast.LENGTH_SHORT).show();
-
         goHome();
+
+        Toast.makeText(getContext(), "Saved", Toast.LENGTH_SHORT).show();
     }
 
-    private void goHome(){
+    private void goHome() {
         getActivity().getSupportFragmentManager().popBackStack();
     }
 }
