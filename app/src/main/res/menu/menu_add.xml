@@ -6,7 +6,8 @@
         android:id="@+id/action_add"
         android:orderInCategory="100"
         android:icon="@drawable/ic_save"
-        android:title="SAVE"
+        android:title="@string/save"
+        android:contentDescription="@string/save_cd"
         app:showAsAction="always" />
 
 </menu>

@@ -78,4 +78,29 @@
     <string name="pref_ringtone_silent">Silent</string>
 
     <string name="pref_title_vibrate">Vibrate</string>
+    <string name="scroll_speed_cd">Scroll speed indicator for indicating scrolling/reading speed.</string>
+    <string name="scroll_speed_val_cd">Scrolling/reading speed value.</string>
+    <string name="play_pause_cd">Play/Pase button to pause and play script in presentation mode.</string>
+    <string name="scroll_control_cd">Script control panel for controlling Reading speed and play/pause scrpt.</string>
+    <string name="script_presentation_card_cd">Script/presentation card item.</string>
+    <string name="time_item_cd">Time when script/presentation was last modified.</string>
+    <string name="title_item_cd">Script/Presentation title</string>
+    <string name="script_body_cd">Script/Presentation body contents.</string>
+    <string name="option_menu_cd">Create Scrip/Presentation options menu.</string>
+    <string name="create_new_script_cd">Create new script from typing option.</string>
+    <string name="upload_new_script_cd">Upload script from SD card option.</string>
+    <string name="upload_from_gallery">Upload from gallery</string>
+    <string name="create_new_script">Create new script</string>
+    <string name="speed">speed</string>
+    <string name="_0">0</string>
+    <string name="home_ccd">Home page.</string>
+    <string name="scripts_list_cd">List of scripts/ presentations.</string>
+    <string name="add_new_cript_cd">Add new Script option.</string>
+    <string name="script_actual_cd">Script/presentation body content</string>
+    <string name="script_body_edit_cd">Script/presentation input</string>
+    <string name="add_new_script">Add new script...</string>
+    <string name="presentation_cd">Present script</string>
+    <string name="save_cd">Save</string>
+    <string name="save">SAVE</string>
+    <string name="play">Play</string>
 </resources>

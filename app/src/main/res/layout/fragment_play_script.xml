@@ -5,13 +5,15 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.PlayScriptFragment">
+
     <TextView
         android:id="@+id/scriptTextView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_margin="20dp"
+        android:layout_margin="@dimen/dimen_20dp"
         android:background="@color/white"
         android:gravity="start"
+        android:contentDescription="@string/script_actual_cd"
         android:imeOptions="actionDone"
         android:inputType="textMultiLine"
         android:textColorHint="@color/colorPrimary"

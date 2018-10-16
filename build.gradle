@@ -2,7 +2,7 @@
 
 buildscript {
 
-    ext.kotlin_version = '1.2.51'
+    ext.kotlin_version = '1.2.71'
     ext.roomVersion = '1.0.0'
     ext.archLifecycleVersion = '1.1.0'
     ext.supportVerion = '27.1.1'
@@ -17,12 +17,12 @@ buildscript {
         }
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.1.4'
+        classpath 'com.android.tools.build:gradle:3.2.1'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
 
         // Check for v3.1.2 or higher
         classpath 'com.google.gms:google-services:4.1.0'
-        classpath 'io.fabric.tools:gradle:1.25.4'
+        classpath 'io.fabric.tools:gradle:1.26.1'
 
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files

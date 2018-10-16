@@ -12,6 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
+        android:contentDescription="@string/scroll_control_cd"
         android:background="@color/gray">
 
         <SeekBar
@@ -22,6 +23,7 @@
             android:layout_marginLeft="8dp"
             android:layout_marginRight="8dp"
             android:layout_marginStart="8dp"
+            android:contentDescription="@string/scroll_speed_cd"
             android:max="100"
             app:layout_constraintStart_toEndOf="@id/controlButton"/>
 
@@ -29,9 +31,10 @@
             android:id="@+id/speedValue"
             android:layout_width="25dp"
             android:layout_height="wrap_content"
-            android:text="0"
+            android:text="@string/_0"
             android:gravity="center"
             android:textColor="@color/white"
+            android:contentDescription="@string/scroll_speed_val_cd"
             app:layout_constraintStart_toEndOf="@id/speedTv" />
 
         <TextView
@@ -39,7 +42,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="4dp"
-            android:text="speed"
+            android:text="@string/speed"
             android:textColor="@color/white"
             app:layout_constraintStart_toEndOf="@id/speedSeekBar"/>
 
@@ -47,6 +50,7 @@
             android:id="@+id/controlButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:contentDescription="@string/play_pause_cd"
             android:background="@color/gray"
             android:src="@drawable/ic_play"/>
 

@@ -17,10 +17,11 @@
             android:id="@+id/scriptTextView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="20dp"
+            android:layout_margin="@dimen/dimen_20dp"
             android:background="@color/colorPrimary"
             android:gravity="start"
             android:clickable="true"
+            android:contentDescription="@string/script_actual_cd"
             android:textColor="@color/white"
             android:textColorHint="@color/colorPrimary"
             android:theme="@style/TextPrimary"
@@ -31,9 +32,9 @@
     <include layout="@layout/speed_control_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
-        android:layout_marginLeft="5dp"
-        android:layout_marginRight="5dp"
+        android:layout_marginTop="@dimen/dimen_5dp"
+        android:layout_marginLeft="@dimen/dimen_5dp"
+        android:layout_marginRight="@dimen/dimen_5dp"
         android:layout_alignParentBottom="true"/>
 
 </RelativeLayout>

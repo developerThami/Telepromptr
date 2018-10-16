@@ -68,6 +68,7 @@ public class ScriptListFragment extends Fragment {
     }
 
     public static ScriptListFragment newInstance() {
+
         return new ScriptListFragment();
     }
 
