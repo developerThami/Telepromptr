@@ -35,6 +35,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.Calendar;
 import java.util.List;
@@ -199,38 +200,30 @@ public class ScriptListFragment extends Fragment {
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        Uri uri = null;
-        if (data != null) {
-            uri = data.getData();
-            Log.d(FRAGMENT_TAG, getTextFileData(uri.getPath()));
-        }
-
+        String dataText;
+        Uri uri;
         if (requestCode == CODE) {
-       //     Toast.makeText(getContext(), getTextFileData(uri.getPath()), Toast.LENGTH_SHORT).show();
+            if (data != null) {
+                uri = data.getData();
+                try {
+                    dataText = readTextFromUri(uri);
+                    Log.d(FRAGMENT_TAG, dataText);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
         }
     }
 
-    public String getTextFileData(String fileName) {
-
-        File sdcard = Environment.getExternalStorageDirectory();
-        String[] array = fileName.split("/");
-
-        File file = new File(fileName);
-        StringBuilder text = new StringBuilder();
-        try {
-            BufferedReader br = new BufferedReader(new FileReader(file));
-            String line;
-            while ((line = br.readLine()) != null) {
-                text.append(line);
-                text.append('\n');
-            }
-            br.close();
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
+    private String readTextFromUri(Uri uri) throws IOException {
+        InputStream inputStream = getActivity().getContentResolver().openInputStream(uri);
+        BufferedReader reader = new BufferedReader(new InputStreamReader(
+                inputStream));
+        StringBuilder stringBuilder = new StringBuilder();
+        String line;
+        while ((line = reader.readLine()) != null) {
+            stringBuilder.append(line);
         }
-
-        return text.toString();
+        return stringBuilder.toString();
     }
 }
