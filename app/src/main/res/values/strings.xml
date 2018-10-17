@@ -98,9 +98,11 @@
     <string name="add_new_cript_cd">Add new Script option.</string>
     <string name="script_actual_cd">Script/presentation body content</string>
     <string name="script_body_edit_cd">Script/presentation input</string>
-    <string name="add_new_script">Add new script...</string>
+    <string name="add_new_script">Script/presentation body here..</string>
     <string name="presentation_cd">Present script</string>
     <string name="save_cd">Save</string>
     <string name="save">SAVE</string>
     <string name="play">Play</string>
+    <string name="add_new_script_title">Script title..</string>
+    <string name="create_new_title">Create new script</string>
 </resources>

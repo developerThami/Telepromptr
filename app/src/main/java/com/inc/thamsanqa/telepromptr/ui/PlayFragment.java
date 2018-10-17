@@ -129,7 +129,7 @@ public class PlayFragment extends Fragment {
 
         scriptView.setText(script.getBody());
         scriptView.setTextSize(45);
-//        scriptView.setTextSize(60);
+//        scriptBodyEt.setTextSize(60);
 
         seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
@@ -175,7 +175,7 @@ public class PlayFragment extends Fragment {
 
     private void updateSpeed(int progress) {
         progressTextView.setText(progress + "");
-        //scriptView.getLineCount()
+        //scriptBodyEt.getLineCount()
     }
 
     public void scroll() {
@@ -205,7 +205,7 @@ public class PlayFragment extends Fragment {
 //        dialog.hide();
 //        scrollView.postDelayed(new Runnable() {
 //            public void run() {
-//                scrollView.smoothScrollTo(0, scriptView.getBottom() / 2);
+//                scrollView.smoothScrollTo(0, scriptBodyEt.getBottom() / 2);
 //            }
 //        }, 1000);
 //    }

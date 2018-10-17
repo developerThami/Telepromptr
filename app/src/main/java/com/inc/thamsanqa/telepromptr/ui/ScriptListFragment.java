@@ -65,11 +65,10 @@ public class ScriptListFragment extends Fragment {
     OnAddScriptListener listener;
 
     interface OnAddScriptListener {
-        void createNewScript();
+        void createNewScript(String scriptBody);
     }
 
     public static ScriptListFragment newInstance() {
-
         return new ScriptListFragment();
     }
 
@@ -181,7 +180,7 @@ public class ScriptListFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 dialog.dismiss();
-                listener.createNewScript();
+                listener.createNewScript(null);
             }
         });
 
@@ -207,6 +206,7 @@ public class ScriptListFragment extends Fragment {
                 uri = data.getData();
                 try {
                     dataText = readTextFromUri(uri);
+                    listener.createNewScript(dataText);
                     Log.d(FRAGMENT_TAG, dataText);
                 } catch (IOException e) {
                     e.printStackTrace();

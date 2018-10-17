@@ -78,10 +78,10 @@ public class MainActivity extends AppCompatActivity implements ScriptAdapter.OnS
     }
 
     @Override
-    public void createNewScript() {
+    public void createNewScript(String scriptBody) {
         getSupportFragmentManager()
                 .beginTransaction()
-                .replace(R.id.container, AddScriptFragment.newInstance())
+                .replace(R.id.container, AddScriptFragment.newInstance(scriptBody))
                 .addToBackStack(AddScriptFragment.FRAGMENT_TAG)
                 .commit();
     }

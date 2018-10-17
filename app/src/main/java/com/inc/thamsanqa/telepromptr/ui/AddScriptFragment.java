@@ -4,6 +4,8 @@ import android.arch.lifecycle.ViewModelProviders;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.ActionBar;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -28,9 +30,13 @@ import butterknife.ButterKnife;
 public class AddScriptFragment extends Fragment {
 
     public static final String FRAGMENT_TAG = "AddScriptFragment.TAG";
+    private String scriptBody;
 
     @BindView(R.id.scriptText)
-    EditText scriptView;
+    EditText scriptBodyEt;
+
+    @BindView(R.id.scriptTitle)
+    EditText scriptTitleEt;
 
 
     public AddScriptFragment() {
@@ -43,8 +49,9 @@ public class AddScriptFragment extends Fragment {
      *
      * @return A new instance of fragment PlayScriptFragment.
      */
-    public static AddScriptFragment newInstance() {
+    public static AddScriptFragment newInstance(@Nullable String scriptBody) {
         AddScriptFragment fragment = new AddScriptFragment();
+        fragment.scriptBody = scriptBody;
         return fragment;
     }
 
@@ -61,9 +68,13 @@ public class AddScriptFragment extends Fragment {
         ButterKnife.bind(this, view);
 
         MainActivity activity = (MainActivity) getActivity();
-        activity.getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_close);
-        activity.getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        activity.getSupportActionBar().setTitle("New Script");
+        ActionBar bar = activity.getSupportActionBar();
+
+        bar.setDisplayHomeAsUpEnabled(true);
+        bar.setTitle(R.string.create_new_title);
+
+        if (this.scriptBody != null)
+            scriptBodyEt.setText(this.scriptBody);
 
         return view;
     }
@@ -92,15 +103,24 @@ public class AddScriptFragment extends Fragment {
 
         ScriptViewModel viewModel = ViewModelProviders.of(this).get(ScriptViewModel.class);
 
-        Script script = new Script();
-        script.setTitle("Untitled");
-        script.setBody(scriptView.getText().toString());
-        script.setDateInMilli(System.currentTimeMillis());
+        String title = scriptTitleEt.getText().toString();
+        String body = scriptBodyEt.getText().toString();
 
-        viewModel.saveNewScript(script);
-        goHome();
+        if (!TextUtils.isEmpty(body)) {
 
-        Toast.makeText(getContext(), "Saved", Toast.LENGTH_SHORT).show();
+            title = !title.isEmpty() ? title : "Untitled";
+
+            Script script = new Script();
+
+            script.setTitle(title);
+            script.setBody(body);
+            script.setDateInMilli(System.currentTimeMillis());
+            viewModel.saveNewScript(script);
+
+            goHome();
+            Toast.makeText(getContext(), "Saved", Toast.LENGTH_SHORT).show();
+        }
+
     }
 
     private void goHome() {

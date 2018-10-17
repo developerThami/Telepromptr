@@ -81,7 +81,6 @@ public class PlayScriptFragment extends Fragment {
         script = getArguments().getParcelable(ARG_PARAM1);
 
         activity = (MainActivity) getActivity();
-        activity.getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_close);
         activity.getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         initViews();
