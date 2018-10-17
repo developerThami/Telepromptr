@@ -105,4 +105,7 @@
     <string name="play">Play</string>
     <string name="add_new_script_title">Script title..</string>
     <string name="create_new_title">Create new script</string>
+    <string name="_3_hours_ago">3 hours ago</string>
+    <string name="video_blog_script_1">Video Blog script 1</string>
+    <string name="accused_of_continuing_to_track_users_movements_even_when_they_have_turned_off_their_location_history_google_is_being_sued_in_the_united_states_for_unauthorised_location_data_collection">Accused of continuing to track users\' movements even when they have turned off their location history, Google is being sued in the United States for unauthorised location data collection</string>
 </resources>
