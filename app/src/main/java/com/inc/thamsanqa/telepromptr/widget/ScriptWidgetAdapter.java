@@ -1,35 +1,23 @@
 package com.inc.thamsanqa.telepromptr.widget;
 
-import android.app.Application;
-import android.appwidget.AppWidgetManager;
-import android.arch.lifecycle.Lifecycle;
-import android.arch.lifecycle.LifecycleOwner;
 import android.arch.lifecycle.Observer;
-import android.arch.lifecycle.ViewModelProviders;
-import android.content.ComponentName;
 import android.content.Context;
-import android.content.Intent;
-import android.os.AsyncTask;
-import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.support.v7.widget.LinearLayoutManager;
-import android.util.Log;
 import android.widget.RemoteViews;
 import android.widget.RemoteViewsService;
-
 
 import com.inc.thamsanqa.telepromptr.R;
 import com.inc.thamsanqa.telepromptr.persistance.entities.Script;
 import com.inc.thamsanqa.telepromptr.persistance.repository.ScriptRepository;
 import com.inc.thamsanqa.telepromptr.ui.TimeUtil;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class ScriptWidgetAdapter implements RemoteViewsService.RemoteViewsFactory {
 
-    Context context;
-    private List<Script> scriptsList = new ArrayList<>();
+    private Context context;
+    private List<Script> scriptsList;
+    private boolean initLoad = true;
 
 
     public ScriptWidgetAdapter(final Context context) {
@@ -37,22 +25,18 @@ public class ScriptWidgetAdapter implements RemoteViewsService.RemoteViewsFactor
     }
 
     private void populateScripts() {
-
         ScriptRepository repository = new ScriptRepository(context);
         repository.getAllScripts().observeForever(new Observer<List<Script>>() {
             @Override
             public void onChanged(@Nullable List<Script> scripts) {
-                scriptsList.addAll(scripts);
-                Log.d("####", "" + scriptsList.size());
+                scriptsList = scripts;
+                if (initLoad){
+                    initLoad = false;
+                }
             }
         });
 
-        Script script = new Script();
-        script.setTitle("roccky");
-        script.setDateInMilli(System.currentTimeMillis() - 100);
-        script.setBody("kjashdjhkjajc ajidhlsjhiudh jashldcajs auishcilabnd");
-
-        scriptsList.add(script);
+        while (initLoad){ }
     }
 
     @Override
