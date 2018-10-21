@@ -5,6 +5,9 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.MobileAds;
 import com.inc.thamsanqa.telepromptr.R;
 import com.inc.thamsanqa.telepromptr.persistance.entities.Script;
 
@@ -16,6 +19,9 @@ public class MainActivity extends AppCompatActivity implements ScriptAdapter.OnS
 
     @BindView(R.id.toolbar)
     Toolbar bar;
+
+    @BindView(R.id.adView)
+    AdView adView;
 
     private static final String SCRIPT_KEY = "Script.key";
     Script script;
@@ -30,9 +36,14 @@ public class MainActivity extends AppCompatActivity implements ScriptAdapter.OnS
         ButterKnife.bind(this);
         setSupportActionBar(bar);
 
+        MobileAds.initialize(this, getString(R.string.ad_unit_id));
+        AdRequest adRequest = new AdRequest.Builder().build();
+        adView.loadAd(adRequest);
+
+        ScriptListFragment fragment = ScriptListFragment.newInstance();
+        fragment.setListener(this);
+
         if (savedInstanceState == null) {
-            ScriptListFragment fragment = ScriptListFragment.newInstance();
-            fragment.setListener(this);
             getSupportFragmentManager()
                     .beginTransaction()
                     .replace(R.id.container, fragment)

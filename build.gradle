@@ -3,10 +3,11 @@
 buildscript {
 
     ext.kotlin_version = '1.2.71'
-    ext.roomVersion = '1.0.0'
+    ext.roomVersion = '1.1.1'
     ext.archLifecycleVersion = '1.1.0'
     ext.supportVerion = '27.1.1'
     ext.butterKnifeVersion = '8.8.1'
+    ext.firebaseVersion = '17.0.0'
 
 
     repositories {
@@ -33,6 +34,9 @@ allprojects {
     repositories {
         google()
         jcenter()
+        maven {
+            url 'https://maven.fabric.io/public'
+        }
     }
 }
 

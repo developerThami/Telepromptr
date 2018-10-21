@@ -110,4 +110,6 @@
     <string name="accused_of_continuing_to_track_users_movements_even_when_they_have_turned_off_their_location_history_google_is_being_sued_in_the_united_states_for_unauthorised_location_data_collection">Accused of continuing to track users\' movements even when they have turned off their location history, Google is being sued in the United States for unauthorised location data collection</string>
     <string name="appwidget_text">Oops! no scripts</string>
     <string name="add_widget">Add widget</string>
+    <string name="ad_unit_id">ca-app-pub-3940256099942544/6300978111</string>
+    <string name="admob_app_id">ca-app-pub-9144852064234141~3262927825</string>
 </resources>
