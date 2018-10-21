@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.View;
 
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
@@ -15,7 +16,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class MainActivity extends AppCompatActivity implements ScriptAdapter.OnScriptSelectedListener
-        , PlayScriptFragment.PlayScriptListener , ScriptListFragment.OnAddScriptListener {
+        , PlayScriptFragment.PlayScriptListener, ScriptListFragment.OnAddScriptListener {
 
     @BindView(R.id.toolbar)
     Toolbar bar;
@@ -81,6 +82,7 @@ public class MainActivity extends AppCompatActivity implements ScriptAdapter.OnS
     @Override
     public void onPlayScript(Script script) {
         isPreviewMode = true;
+        adView.setVisibility(View.GONE);
         getSupportFragmentManager()
                 .beginTransaction()
                 .replace(R.id.container, PlayFragment.newInstance(script))
@@ -96,7 +98,6 @@ public class MainActivity extends AppCompatActivity implements ScriptAdapter.OnS
                 .addToBackStack(AddScriptFragment.FRAGMENT_TAG)
                 .commit();
     }
-
 
 //    scriptViewModel = ViewModelProviders.of(this).get(ScriptViewModel.class);
 //    script = scriptViewModel.getScript(getIntent().getIntExtra("id",0));

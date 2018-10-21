@@ -86,7 +86,7 @@ public class ScriptListFragment extends Fragment {
         ButterKnife.bind(this, view);
 
         activity = (MainActivity) getActivity();
-        activity.getSupportActionBar().setTitle("Telepromptr");
+        activity.getSupportActionBar().setTitle(R.string.app_tile);
 
         viewModel = ViewModelProviders.of(this).get(ScriptViewModel.class);
         final ScriptAdapter adapter = new ScriptAdapter();
@@ -113,38 +113,6 @@ public class ScriptListFragment extends Fragment {
             }
         });
 
-//        //ArrayList scripts = new ArrayList<Script>();
-//        Calendar calendar = Calendar.getInstance();
-//
-//        final Script script1 = new Script();
-//        script1.setDateInMilli(calendar.getTimeInMillis() - 70000);
-//        script1.setTitle("Video Blog script 1");
-//        script1.setBody("Accused of continuing to track users' movements even when they have turned off their " +
-//                "location history, Google is being sued in the United States for unauthorised location data collection" +
-//                "We have discussed the basics of the new Android Material Component - BottomAppBar as well as the new FAB " +
-//                "features. The BottomAppBar widget itself is not complicated to use as it extends the traditional Toolbar " +
-//                "but it comes with a dramatic app design change price." +
-//                "Part II and Part III of this BottomAppBar series is on handling navigation drawer control & action menu and the " +
-//                "implementation of BottomAppBar behaviors conforming to Material Design guidelines.");
-//
-//
-//        viewModel.saveNewScript(script1);
-//
-//        //scripts.add(script1);
-//
-//
-//        final Script script2 = new Script();
-//        script2.setDateInMilli(calendar.getTimeInMillis() - 9000000);
-//        script2.setTitle("Script");
-//        script2.setBody("What is Lorem Ipsum?" +
-//                "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem " +
-//                "evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).");
-//
-//
-//        viewModel.saveNewScript(script2);
-
-        //scripts.add(script2);
-        //ScriptAdapter adapter = new ScriptAdapter(scripts);
         MainActivity activity = (MainActivity) getActivity();
         adapter.setListener(activity);
 
