@@ -4,6 +4,7 @@ import android.app.Application;
 import android.arch.lifecycle.AndroidViewModel;
 import android.arch.lifecycle.LiveData;
 import android.support.annotation.NonNull;
+import android.util.Log;
 
 import com.inc.thamsanqa.telepromptr.persistance.entities.Script;
 import com.inc.thamsanqa.telepromptr.persistance.repository.ScriptRepository;
