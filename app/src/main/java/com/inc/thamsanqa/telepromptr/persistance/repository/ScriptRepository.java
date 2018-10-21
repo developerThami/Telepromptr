@@ -3,6 +3,7 @@ package com.inc.thamsanqa.telepromptr.persistance.repository;
 import android.arch.lifecycle.LiveData;
 import android.content.Context;
 import android.os.AsyncTask;
+import android.util.Log;
 
 import com.inc.thamsanqa.telepromptr.persistance.ScriptRoomDatabase;
 import com.inc.thamsanqa.telepromptr.persistance.dao.ScriptDao;
@@ -18,7 +19,6 @@ public class ScriptRepository {
     }
 
     private ScriptDao mDao;
-    private Script script;
 
     public ScriptRepository(Context context) {
         mDao = ScriptRoomDatabase.getDatabase(context).scriptDao();
@@ -26,10 +26,6 @@ public class ScriptRepository {
 
     public void insertScript(Script script) {
         new ScriptAsync().setDao(mDao).setScript(script).execute(ScriptOperation.WRITE_SCRIPT);
-    }
-
-    private void setScript(Script script) {
-        this.script = script;
     }
 
     public Script getScript(int id) {
@@ -83,7 +79,6 @@ public class ScriptRepository {
                 case WRITE_SCRIPT:
                     dao.insert(script);
                     break;
-
             }
             return null;
         }

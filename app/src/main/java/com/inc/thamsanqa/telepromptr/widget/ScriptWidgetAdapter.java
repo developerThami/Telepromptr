@@ -6,51 +6,50 @@ import android.arch.lifecycle.Lifecycle;
 import android.arch.lifecycle.LifecycleOwner;
 import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProviders;
+import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
+import android.util.Log;
 import android.widget.RemoteViews;
 import android.widget.RemoteViewsService;
 
-import com.crashlytics.android.Crashlytics;
+
 import com.inc.thamsanqa.telepromptr.R;
 import com.inc.thamsanqa.telepromptr.persistance.entities.Script;
 import com.inc.thamsanqa.telepromptr.persistance.repository.ScriptRepository;
 import com.inc.thamsanqa.telepromptr.ui.TimeUtil;
-import com.inc.thamsanqa.telepromptr.viewmodel.ScriptViewModel;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class ScriptWidgetAdapter implements RemoteViewsService.RemoteViewsFactory {
 
-    private final int appWidgetId;
     Context context;
     private List<Script> scriptsList = new ArrayList<>();
-    private ScriptRepository repository;
-
-    private List<Script> scripts;
 
 
-    public ScriptWidgetAdapter(Context context, Intent intent) {
+    public ScriptWidgetAdapter(final Context context) {
         this.context = context;
-        appWidgetId = intent.getIntExtra(AppWidgetManager.EXTRA_APPWIDGET_ID,
-                AppWidgetManager.INVALID_APPWIDGET_ID);
-        repository = new ScriptRepository(context.getApplicationContext());
-//        repository.getAllScripts().observeForever(new Observer<List<Script>>() {
-//            @Override
-//            public void onChanged(@Nullable List<Script> scripts) {
-//                setScripts(scripts);
-//            }
-//        });
     }
 
     private void populateScripts() {
+
+        ScriptRepository repository = new ScriptRepository(context);
+        repository.getAllScripts().observeForever(new Observer<List<Script>>() {
+            @Override
+            public void onChanged(@Nullable List<Script> scripts) {
+                scriptsList.addAll(scripts);
+                Log.d("####", "" + scriptsList.size());
+            }
+        });
+
         Script script = new Script();
         script.setTitle("roccky");
-        script.setDateInMilli(System.currentTimeMillis()- 100);
+        script.setDateInMilli(System.currentTimeMillis() - 100);
         script.setBody("kjashdjhkjajc ajidhlsjhiudh jashldcajs auishcilabnd");
 
         scriptsList.add(script);
@@ -58,7 +57,6 @@ public class ScriptWidgetAdapter implements RemoteViewsService.RemoteViewsFactor
 
     @Override
     public void onCreate() {
-        populateScripts();
     }
 
     @Override
